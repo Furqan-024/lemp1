@@ -8,7 +8,7 @@ services:
     build:
       context: ./.docker/nginx
       dockerfile: Dockerfile
-    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/nginx_service:${BUILD_NUMBER}  #The Build Number is GitHub Actions Pipeline Number. Each build will create a new tag.
+    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/nginx:${BUILD_NUMBER}  #The Build Number is GitHub Actions Pipeline Number. Each build will create a new tag.
     ports:
       - 80:80
     volumes:
@@ -22,7 +22,7 @@ services:
     build:
       context: ./.docker/php
       dockerfile: Dockerfile
-    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/php_service:${BUILD_NUMBER}
+    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/phpservice:${BUILD_NUMBER}
     working_dir: /var/www/php
     volumes:
       - ./src:/var/www/php
@@ -34,7 +34,7 @@ services:
     build:
       context: ./.docker/mysql
       dockerfile: Dockerfile
-    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/mysql_service:${BUILD_NUMBER}
+    image: 879381243283.dkr.ecr.us-east-1.amazonaws.com/mysqlservice:${BUILD_NUMBER}
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_ROOT_HOST: "%"
